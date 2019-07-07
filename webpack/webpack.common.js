@@ -3,15 +3,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-const ASSET_PATH = process.env.ASSET_PATH || '/';
-
 module.exports = {
   mode: 'development',
-  entry: ['./src/main.js', './src/style.scss'],
+  entry: [
+    './src/main.js',
+    './src/style.scss',
+  ],
   output: {
     path: __dirname + '/dist',
     filename: 'main.js',
-    // publicPath: ASSET_PATH,
   },
   module: {
     rules: [
@@ -70,8 +70,5 @@ module.exports = {
     minimizer: [
       new OptimizeCSSAssetsPlugin({}),
    ],
-  },
-  devServer: {
-    open: true,
   }
 }
