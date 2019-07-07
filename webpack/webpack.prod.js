@@ -9,14 +9,15 @@ module.exports = merge(common, {
   output: {
     path: __dirname + '/../dist',
     filename: 'main.js',
-    publicPath: 'https://yunseok.com/',
+    publicPath: 'http://yunseok-starter-test.s3-website.ap-northeast-2.amazonaws.com/',
   },
   plugins: [
     new MinifyPlugin({
       removeConsole: true,
     }),
     new CompressionPlugin({
-      deleteOriginalAssets: true,
+      deleteOriginalAssets: false,
+      filename: '[file]'
     }),
   ],
   optimization: {
