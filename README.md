@@ -1,5 +1,17 @@
 # Web Starter Kit
 
+## Install
+
+```bash
+npm i
+```
+
+## Dev
+
+```bash
+npm start
+```
+
 ## Deploy
 
 ```bash
