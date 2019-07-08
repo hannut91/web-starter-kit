@@ -1,8 +1,11 @@
+const glob = require('glob');
+const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MinifyPlugin = require("babel-minify-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin')
 
 module.exports = merge(common, {
   mode: 'production',
@@ -18,6 +21,9 @@ module.exports = merge(common, {
     new CompressionPlugin({
       deleteOriginalAssets: false,
       filename: '[file]'
+    }),
+    new PurgecssPlugin({
+      paths: glob.sync(__dirname + '/../src/**/*', {nodir: true}),
     }),
   ],
   optimization: {
