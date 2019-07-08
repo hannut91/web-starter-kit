@@ -1,17 +1,7 @@
 @import 'assets/scss/reset';
 @import 'assets/scss/variables';
 
-body {
-    background-color: blue;
-    display: flex;
-    user-select: none;
-}
-
-div {
-    background-image: url('assets/img/dog.jpg');
-}
-
-.yunseok {
-    margin: 0;
-    top: 0;
+.swiper-container {
+    width: 100%;
+    height: 300px;
 }

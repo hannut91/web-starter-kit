@@ -13,7 +13,6 @@ module.exports = merge(common, {
   mode: 'production',
   output: {
     path: __dirname + '/../dist',
-    filename: 'main.js',
     publicPath: 'http://yunseok-starter-test.s3-website.ap-northeast-2.amazonaws.com/',
   },
   plugins: [
@@ -27,10 +26,10 @@ module.exports = merge(common, {
     new MinifyPlugin({
       removeConsole: true,
     }),
-    new CompressionPlugin({
-      deleteOriginalAssets: false,
-      filename: '[file]'
-    }),
+    // new CompressionPlugin({
+    //   deleteOriginalAssets: false,
+    //   filename: '[file]'
+    // }),
     new PurgecssPlugin({
       paths: glob.sync(__dirname + '/../src/**/*', {nodir: true}),
     }),

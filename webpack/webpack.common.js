@@ -1,3 +1,5 @@
+const path = require('path');
+const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -5,13 +7,18 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: [
-    './src/main.js',
-    './src/style.scss',
-  ],
+  entry: {
+    login: [
+      './src/pages/login/login.js',
+      './src/pages/login/login.scss'
+    ],
+    global: [
+      './src/style.scss',
+      // path.resolve(__dirname + '/../node_modules/swiper/dist/css/swiper.css')
+    ],
+  },
   output: {
     path: __dirname + '/dist',
-    filename: 'main.js',
   },
   module: {
     rules: [
@@ -21,9 +28,9 @@ module.exports = {
           {
             loader: 'html-loader',
             options: {
-              minimize: true,
+              minimize: process.env.NODE_ENV === 'production',
             },
-          }
+          },
         ],
       },
       {
@@ -58,13 +65,13 @@ module.exports = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: 'index.html',
+      template: './src/pages/login/login.html',
+      filename: 'login.html',
       hash: true,
-      minify: false,
       meta: {
         viewport: 'width=device-width, initial-scale=1',
       },
+      chunks: ['login', 'global']
     }),
   ],
   optimization: {
