@@ -1,4 +1,3 @@
-const glob = require('glob');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
@@ -17,9 +16,6 @@ module.exports = merge(common, {
           autoprefixer()
         ]
       }
-    }),
-    new PurgecssPlugin({
-      paths: glob.sync(__dirname + '/../src/**/*', {nodir: true}),
     }),
   ]
 });

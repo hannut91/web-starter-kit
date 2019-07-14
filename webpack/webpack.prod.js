@@ -26,13 +26,13 @@ module.exports = merge(common, {
     new MinifyPlugin({
       removeConsole: true,
     }),
-    // new CompressionPlugin({
-    //   deleteOriginalAssets: false,
-    //   filename: '[file]'
-    // }),
-    new PurgecssPlugin({
-      paths: glob.sync(__dirname + '/../src/**/*', {nodir: true}),
+    new CompressionPlugin({
+      deleteOriginalAssets: false,
+      filename: '[file]'
     }),
+    // new PurgecssPlugin({
+    //   paths: glob.sync(__dirname + '/../src/**/*', {nodir: true}),
+    // }),
   ],
   optimization: {
     minimizer: [
